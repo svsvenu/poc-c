@@ -1,0 +1,1 @@
+cmd_/home/pi/kernel_modules/drivers/list_tasks.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/pi/kernel_modules/drivers/list_tasks.ko /home/pi/kernel_modules/drivers/list_tasks.o /home/pi/kernel_modules/drivers/list_tasks.mod.o ;  true
