@@ -2,3 +2,6 @@
 *.out
 *.cmd
 *.ko
+*.s
+*.S
+run
