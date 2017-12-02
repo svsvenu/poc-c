@@ -1,10 +1,12 @@
-/* Linked lists program */
+/* Linked lists programs */
 
 #include<stdio.h>
 
 // malloc functions
 #include<stdlib.h>
 
+
+//The structure that we will be playing with, populating, deleting etc
 struct student {
 
             int id;
@@ -18,15 +20,12 @@ void populate_list();
 
 void print_list(struct student *student_ptr);
 
-void remove_from_list(struct student *student_ptr, int id);
-
+void remove_from_list(struct student **student_ptr, int id);
 
 int main() {
 
    populate_list(); 
-        
-   printf ("List populated");
-   
+           
 }
 
 void populate_list() {
@@ -53,13 +52,12 @@ void populate_list() {
 	
 	}
 	
-	print_list(student_ptr_head);
+	print_list(student_ptr_head); 
 	
-	remove_from_list(student_ptr_head, 0);
+	remove_from_list(&student_ptr_head, 50);
 	
 	print_list(student_ptr_head);
 
-	
 }
 
 void print_list(struct student *student_ptr) {
@@ -74,36 +72,23 @@ void print_list(struct student *student_ptr) {
 	   
 }
 
-void remove_from_list(struct student *student_ptr, int id) {
-
-		struct student *head = student_ptr;
+void remove_from_list(struct student **indirect_head, int id) {		
 		
-		struct student **indirect_head = &head;
-		
-		while ( student_ptr->next != NULL ){
+		while ( (*indirect_head)->next != NULL ){
 			
-				if ( student_ptr->id == id ){
+				if ( (*indirect_head)->id == id ){
 					
-					printf ("Match id %d \n", id);
+					*indirect_head = (*indirect_head)->next;
 					
-					*indirect_head = student_ptr->next;
-					
+					printf ("Removed id %d \n", id);
+
 					break;
 					
 				
 				}
-				
-				else {
-				
-					printf ("Found id %d ", student_ptr->id);
 
-				}
-				
-				student_ptr = student_ptr->next;
-				
-				indirect_head = &(*indirect_head)->next;
-		
-		}
-		
+				 indirect_head = &(*indirect_head)->next;
+
+		}	
 		
 }
