@@ -3,22 +3,15 @@
 #include<stdio.h>
 
 // malloc functions
-#include<stdlib.h>
+#include<stdlib.h> 
+#include "func.h"
 
 
-//The structure that we will be playing with, populating, deleting etc
-struct student {
 
-            int id;
-            char name[20];
-            float percentage;
-            struct student *next;
-            
-} student_struct; 
     
 void populate_list();
 
-void print_list(struct student *student_ptr);
+ void print_list(struct student *student_ptr);
 
 void remove_from_list(struct student **student_ptr, int id);
 
